@@ -1,0 +1,20 @@
+<div id="search-component">
+    <label for="search-box">Hero Search</label>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+    <!--Everytime the user types in the textbox, the  binding calls search() with the 
+    textbox value, a "search-item". The searchTerms becomes an Observable emitting a steady 
+    Stream of search items-->
+    <ul class="search-result">
+      <li *ngFor="let hero of heroes$ | async" >
+        <a routerLink="/detail/{{hero.id}}">
+          {{hero.name}}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- AsyncPipe
+    the $ is a convention that indicates heroes$ is an Observable not an array
+    Since *ngFor can't do anything with a Observable, pipe (|) character followed by async.
+    This identifies Angular's AysncPipe and subscribes to an Observable automatically so you won't have to do so in the 
+  component class.-->

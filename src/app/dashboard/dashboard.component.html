@@ -1,0 +1,16 @@
+<h2>Top Heroes</h2>
+<div class="heroes-menu">
+    <a *ngFor = "let hero of heroes" routerLink="/details/{{hero.id}}">
+        {{hero.name}}
+    </a>
+</div>
+
+<app-hero-search></app-hero-search>
+
+<!-- The *ngFor repeater creates as many links as are in the component's heroes array
+    The links are styled as colored blocks by the dashboard.component.css-->
+
+<!-- The class is similar to the HeroComponent class
+    It defines a heroes array property
+    The constructor expects Angular to inject the HeroService into a private heroService property
+    the ngOnInit() lifecycle hook calls getHeroes()-->
